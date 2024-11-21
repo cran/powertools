@@ -1,4 +1,4 @@
-499437a65ade1e8bdcccdfc698a474b3 *DESCRIPTION
+2e61ad134db8ebb12fc3f97365ecd6be *DESCRIPTION
 eb426133b7835b0b35970c08bc780210 *LICENSE
 47e48a5bc14c64e23a65f12f2c81196a *NAMESPACE
 571cfa6f4aff06b9bcbeb8a5d4d5dcce *R/altprimary.R
@@ -13,8 +13,8 @@ f6ece6ca06da7a4889534b2adbc35d87 *R/anova1way.c.unbal.R
 1eefe0759a82e051ac070f2ff85b2557 *R/anova2way.se.bal.R
 8b8bbeda8a71dbc66ed172ab9cbed2e2 *R/anova2way.se.unbal.R
 b422a992b296fa25e6e4cb53901ee015 *R/check.many.R
-05698c62b7947cfe669f368890efdcbf *R/check.param.R
-44f226ff486d8f773ab9f4740e702d97 *R/chisq.gof.R
+ec88d9e256e9792cc7af28ab7a3e85cf *R/check.param.R
+ca59793fe95bd806b2e83654484afabd *R/chisq.gof.R
 31a48466961f4ad86d20f1d87dc7f604 *R/chisq.indep.R
 75ec8d7b77b276d9190b4e08843afab7 *R/ci.mean.R
 e11fa44823373c7a2b677b8e127f6276 *R/ci.meandiff.R
@@ -77,7 +77,7 @@ bf80f4c34e1495978a1e17ea9f668fa7 *man/anova2way.se.bal.Rd
 08ddd84c686f51c6da90bb1a1fce10b0 *man/anova2way.se.unbal.Rd
 20ba5640f268a24e7066ee125483c89e *man/check.many.Rd
 43bb76467c3f637681faa48d043c7326 *man/check.param.Rd
-66e15c26306bbcfd26a7b45236a6bdb5 *man/chisq.gof.Rd
+faef6bb66297ad5d5baf289ce196247d *man/chisq.gof.Rd
 337252fbf26d0f8000057858c061a1f3 *man/chisq.indep.Rd
 fa00872889a31968f290d35c4d5e96ca *man/ci.mean.Rd
 178eb8a0eae415e738cc516e8eff2d61 *man/ci.meandiff.Rd
@@ -120,11 +120,11 @@ ac1c57468a33755949604bf91e6bb265 *man/relrisk.Rd
 571c914cdb7bdea7b1bf92667abce585 *man/signedrank.Rd
 5783c7ad625b12b815c787b630a9439b *man/signtest.Rd
 54d2453a36614f6552e36c13efdc4e57 *man/slr.Rd
-57903b3379ce2181fe0664b4bab2e58a *man/ttest.1samp.Rd
-b7d003cd2168b8005d106f0513a129b2 *man/ttest.2samp.Rd
-7089e404c14c3d2952a298705527e6e8 *man/ttest.paired.Rd
-1cb23fbd49f1edec8c86fae1a074f714 *man/ztest.1samp.Rd
-9f0210457b9f1f2fdfcc55899d21e09b *man/ztest.2samp.Rd
-458ef736cadc6538fc4b4a4f37a7676c *man/ztest.paired.Rd
+7113dd99b42c61be70621d6df1534ea7 *man/ttest.1samp.Rd
+6974e6ec2f75f55d55716ba5e65b6bc4 *man/ttest.2samp.Rd
+44766d881a42090fd0b47eab626800b6 *man/ttest.paired.Rd
+cde72fbd6a893e3f701a8abf5945bc35 *man/ztest.1samp.Rd
+05b1e5ae75b7a87fb846825a220bfc39 *man/ztest.2samp.Rd
+51e90c1f609ae96375c7ce51808d7260 *man/ztest.paired.Rd
 cbfd98b797dc315169733567f7649ebd *tests/testthat.R
 305d5e22a01535073ab42ba36ee4eaf5 *tests/testthat/test-re.clustsize.cont.R

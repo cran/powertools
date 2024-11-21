@@ -1,7 +1,7 @@
 Package: powertools
 Type: Package
 Title: Power and Sample Size Tools
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: c(
     person(given = "Catherine M.", family = "Crespi", email = "ccrespi@ucla.edu", role = c("aut", "cre")),
     person(given = "Zichen", family = "Liu", email = "zichenliu@ucla.edu", role = "aut"),
@@ -27,9 +27,9 @@ Config/testthat/edition: 3
 Imports: mvtnorm, PowerTOST, Hmisc, stats, knitr
 Depends: R (>= 2.10)
 NeedsCompilation: no
-Packaged: 2024-11-13 21:22:52 UTC; zichenliu
+Packaged: 2024-11-20 22:55:09 UTC; ccrespi
 Author: Catherine M. Crespi [aut, cre],
   Zichen Liu [aut],
   Kristen M. McGreevy [ctb]
 Repository: CRAN
-Date/Publication: 2024-11-14 14:00:07 UTC
+Date/Publication: 2024-11-21 08:10:02 UTC
