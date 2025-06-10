@@ -29,16 +29,14 @@
 #' sd = 2, alpha = 0.05)
 
 anova2way.c.bal <- function (n = NULL, mmatrix = NULL, cvec = NULL,
-                                factor = c("a", "b"), sd = 1, Rsq = 0, ncov = 0,
-                                alpha = 0.05, power = NULL, v = FALSE) {
+                             factor = c("a", "b"), sd = 1, Rsq = 0, ncov = 0,
+                             alpha = 0.05, power = NULL, v = FALSE) {
 
   # Check if the arguments are specified correctly
   check.many(list(n, alpha, power), "oneof")
   check.param(n, "pos"); check.param(n, "min", min = 2)
   check.param(mmatrix, "req"); check.param(mmatrix, "mat")
-  check.param(cvec, "req"); check.param(cvec, "vec")
-  if (sum(cvec) != 0)
-    stop("sum of contrast coefficients must equal 0")
+  check.param(cvec, "req"); check.param(cvec, "vec"); check.param(cvec, "sum0")
   check.param(factor, "req"); check.param(factor, "vals", valslist = c("a", "b"))
   check.param(sd, "req"); check.param(sd, "pos")
   check.param(Rsq, "req"); check.param(Rsq, "uniti")
@@ -77,17 +75,17 @@ anova2way.c.bal <- function (n = NULL, mmatrix = NULL, cvec = NULL,
               1, df2, Lambda, lower.tail = FALSE)
   })
 
-  # Use stats::uniroot function to calculate missing argument
+  # Use safe.uniroot function to calculate missing argument
   if (is.null(power)) {
     power <- eval(p.body)
     if (!v) return(power)
   }
   else if (is.null(n)) {
-    n <- stats::uniroot(function(n) eval(p.body) - power, c(2, 1e+05))$root
+    n <- safe.uniroot(function(n) eval(p.body) - power, c(2 + ncov/(a * b), 1e+05))$root
     if (!v) return(n)
   }
   else if (is.null(alpha)) {
-    alpha <- stats::uniroot(function(alpha) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
+    alpha <- safe.uniroot(function(alpha) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
     if (!v) return(alpha)
   }
   else stop("internal error", domain = NA)

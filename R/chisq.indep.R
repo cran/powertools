@@ -26,7 +26,7 @@ chisq.indep <- function (pmatrix = NULL, N = NULL, alpha = 0.05, power = NULL,
 
   # Check if the arguments are specified correctly
   check.many(list(N, alpha, power), "oneof")
-  check.param(pmatrix, "req"); check.param(pmatrix, "mat"); check.param(pmatrix, "sum")
+  check.param(pmatrix, "req"); check.param(pmatrix, "mat"); check.param(pmatrix, "sum1")
   check.param(N, "pos"); check.param(N, "min", min = 2)
   check.param(alpha, "unit")
   check.param(power, "unit")
@@ -45,17 +45,17 @@ chisq.indep <- function (pmatrix = NULL, N = NULL, alpha = 0.05, power = NULL,
                   df, N * es^2, lower = FALSE)
   })
 
-  # Use stats::uniroot function to calculate missing argument
+  # Use safe.uniroot function to calculate missing argument
   if (is.null(power)) {
     power <- eval(p.body)
     if (!v) return(power)
   }
   else if (is.null(N)) {
-    N <- stats::uniroot(function(N) eval(p.body) - power, c(1 + 1e-10, 1e+09))$root
+    N <- safe.uniroot(function(N) eval(p.body) - power, c(1 + 1e-10, 1e+09))$root
     if (!v) return(N)
   }
   else if (is.null(alpha)) {
-    alpha <- stats::uniroot(function(sig.level) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
+    alpha <- safe.uniroot(function(sig.level) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
     if (!v) return(alpha)
   }
   else stop("internal error")

@@ -60,54 +60,54 @@ ttest.2samp <- function (n1 = NULL, n.ratio = 1, delta = NULL,
   if (sides == 1)
     p.body <- quote({
       d <- abs(delta)
-      nu <- switch(df.method,
+      df <- switch(df.method,
                    welch = (sd1^2 / n1 + (sd1 * sd.ratio)^2 / (n1 * n.ratio))^2 /
-                     ((sd1^2 / n1)^2 / (n1 - 1) +
-                        ((sd1 * sd.ratio)^2 / (n.ratio * n1))^2 / (n1 * n.ratio - 1)),
+                   ((sd1^2 / n1)^2 / (n1 - 1) +
+                   ((sd1 * sd.ratio)^2 / (n.ratio * n1))^2 / (n1 * n.ratio - 1)),
                    classical = (1 + n.ratio) * n1 - 2)
-      stats::pt(stats::qt(alpha, nu, lower = FALSE), nu,
-                sqrt(n1 / (1 + sd.ratio^2 / n.ratio)) * d / sd1, lower = FALSE)
+      stats::pt(stats::qt(alpha, df, lower.tail = FALSE), df,
+                sqrt(n1 / (1 + sd.ratio^2 / n.ratio)) * d / sd1, lower.tail = FALSE)
     })
   else if (sides == 2)
     p.body <- quote({
       d <- abs(delta)
-      nu <- switch(df.method,
-                   welch = (sd1^2 / n1 + (sd1 * sd.ratio)^2 / (n1 * n.ratio))^2 /
-                     ((sd1^2 / n1)^2 / (n1 - 1) +
-                        ((sd1 * sd.ratio)^2 / (n.ratio * n1))^2 / (n1 * n.ratio - 1)),
-                   classical = (1 + n.ratio) * n1 - 2)
-      qu <- stats::qt(alpha / 2, nu, lower = FALSE)
+      df2 <- switch(df.method,
+                    welch = (sd1^2 / n1 + (sd1 * sd.ratio)^2 / (n1 * n.ratio))^2 /
+                    ((sd1^2 / n1)^2 / (n1 - 1) +
+                    ((sd1 * sd.ratio)^2 / (n.ratio * n1))^2 / (n1 * n.ratio - 1)),
+                    classical = (1 + n.ratio) * n1 - 2)
+      q <- stats::qf(alpha, 1, df2, lower.tail = FALSE)
       ncp <- sqrt(n1 / (1 + sd.ratio^2 / n.ratio)) * d / sd1
-      stats::pt(qu, nu, ncp, lower = FALSE) + pt(-qu, nu, ncp, lower = TRUE)
+      stats::pf(q, 1, df2, ncp^2, lower.tail = FALSE)
     })
 
-  # Use stats::uniroot function to calculate missing argument
+  # Use safe.uniroot function to calculate missing argument
   if (is.null(power)) {
     power <- eval(p.body)
     if (!v) return(power)
   }
   else if (is.null(n1)) {
-    n1 <- stats::uniroot(function(n1) eval(p.body) - power, c(2, 1e+07))$root
+    n1 <- safe.uniroot(function(n1) eval(p.body) - power, c(2, 1e+07))$root
     if (!v) return(n1)
   }
   else if (is.null(n.ratio)) {
-    n.ratio <- stats::uniroot(function(n.ratio) eval(p.body) - power, c(2/n1, 1e+07))$root
+    n.ratio <- safe.uniroot(function(n.ratio) eval(p.body) - power, c(2/n1, 1e+07))$root
     if (!v) return(n.ratio)
   }
   else if (is.null(sd1)) {
-    sd1 <- stats::uniroot(function(sd1) eval(p.body) - power, delta * c(1e-07, 1e+07))$root
+    sd1 <- safe.uniroot(function(sd1) eval(p.body) - power, delta * c(1e-07, 1e+07))$root
     if (!v) return(sd1)
   }
   else if (is.null(sd.ratio)) {
-    sd.ratio <- stats::uniroot(function(sd.ratio) eval(p.body) - power, c(1e-07, 1e+07))$root
+    sd.ratio <- safe.uniroot(function(sd.ratio) eval(p.body) - power, c(1e-07, 1e+07))$root
     if (!v) return(sd.ratio)
   }
   else if (is.null(delta)) {
-    delta <- stats::uniroot(function(delta) eval(p.body) - power,  c(1e-07, 1e+07))$root
+    delta <- safe.uniroot(function(delta) eval(p.body) - power,  c(1e-07, 1e+07))$root
     if (!v) return(delta)
   }
   else if (is.null(alpha)) {
-    alpha <- stats::uniroot(function(alpha) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
+    alpha <- safe.uniroot(function(alpha) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
     if (!alpha) return(alpha)
   }
   else stop("internal error")

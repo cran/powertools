@@ -1,10 +1,11 @@
-#' Relative efficiency of a cluster randomized trial with continuous outcome
+#' Relative efficiency of a cluster randomized or multisite trial with continuous outcome
 #' with varying cluster sizes
 #'
 #' @description
-#' For a continuous outcome, computes the relative efficiency (ratio of the variances) of a cluster randomized trial
-#' with varying cluster sizes to that of a cluster randomized trial with constant cluster sizes,
-#' assuming equal total number of subjects.
+#' For a continuous outcome, computes the relative efficiency (ratio of the variances) of a cluster randomized
+#' or multisite trial with varying cluster (site) sizes to that of a trial with constant cluster sizes,
+#' assuming equal total number of subjects. This approximation may not be valid for all combinations of
+#' parameters, for example when m.sd is large.
 #'
 #'
 #' @param m The number of subjects per cluster or the mean cluster size (if unequal number of participants per cluster).
@@ -25,5 +26,9 @@ re.clustsize.cont <- function (m, m.sd, icc) {
   cv <- m.sd / m
   K <- (m * icc) / (1 + (m - 1) * icc)
   RE <- 1 - cv^2 * K * (1 - K)
+
+  NOTE <- "Relative efficiency values cannot be negative.\nThe approximation appears to be invalid for this combination\nof parameters, e.g. when m.sd is large"
+  if (RE < 0) cat(paste("NOTE:", NOTE, "\n"))
+
   return(RE)
 }

@@ -35,13 +35,11 @@ propodds <- function(pC, OR, n1, n.ratio = 1, alpha = 0.05,
   check.param(n.ratio, "pos")
   check.param(power, "unit")
   check.param(alpha, "unit")
-  check.param(pC, "req"); check.param(pC, "sum")
+  check.param(pC, "req"); check.param(pC, "sum1")
   check.param(OR, "req"); check.param(OR, "mini", min = 1)
   check.param(v, "req"); check.param(v, "bool")
 
   pC <- pC[!is.na(pC)]
-  if (abs(sum(pC) - 1) > 1e-05)
-    stop("probabilities in pC do not sum to 1")
   pT <- Hmisc::pomodm(p = pC, odds.ratio = 1 / OR)
   pavg <- (pC + pT) / 2
   ps <- 1 - sum(pavg^3)
@@ -59,15 +57,15 @@ propodds <- function(pC, OR, n1, n.ratio = 1, alpha = 0.05,
     if (!v) return(power)
   }
   else if (is.null(n1)){
-    n1 <- stats::uniroot(function(n1) eval(p.body) - power, c(2 + 1e-10, 1e+09))$root
+    n1 <- safe.uniroot(function(n1) eval(p.body) - power, c(2 + 1e-10, 1e+09))$root
     if (!v) return(n1)
   }
   else if (is.null(n.ratio)) {
-    n.ratio <- stats::uniroot(function(n.ratio) eval(p.body) - power, c(2/n1, 1e+07))$root
+    n.ratio <- safe.uniroot(function(n.ratio) eval(p.body) - power, c(2/n1, 1e+07))$root
     if (!v) return(n.ratio)
   }
   else if (is.null(alpha)) {
-    alpha <- stats::uniroot(function(alpha) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
+    alpha <- safe.uniroot(function(alpha) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
     if (!v) return(alpha)
   }
   else stop("internal error")

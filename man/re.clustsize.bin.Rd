@@ -2,7 +2,7 @@
 % Please edit documentation in R/re.clustsize.bin.R
 \name{re.clustsize.bin}
 \alias{re.clustsize.bin}
-\title{Relative efficiency of a cluster randomized trial with binary outcome
+\title{Relative efficiency of a cluster randomized or multisite trial with binary outcome
 with varying cluster sizes}
 \usage{
 re.clustsize.bin(m, m.sd, pc, pt, sigma.u)
@@ -22,9 +22,10 @@ re.clustsize.bin(m, m.sd, pc, pt, sigma.u)
 The computed RE.
 }
 \description{
-For a binary outcome, computes the relative efficiency (ratio of the variances) of a cluster randomized trial
-with varying cluster sizes to that of a cluster randomized trial with constant cluster sizes,
-assuming equal total number of subjects.
+For a binary outcome, computes the relative efficiency (ratio of the variances) of a cluster randomized
+or multisite trial with varying cluster (site) sizes to that of a trial with constant cluster sizes,
+assuming equal total number of subjects. This approximation may not be valid for all combinations of
+parameters, for example when m.sd is large.
 }
 \details{
 Candel MJJM and van Breukelen GJP (2010) Sample size adjustments for varying cluster sizes in

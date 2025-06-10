@@ -26,8 +26,8 @@ chisq.gof <- function (p0vec = NULL, p1vec = NULL,
 
   # Check if the arguments are specified correctly
   check.many(list(N, alpha, power), "oneof")
-  check.param(p0vec, "req"); check.param(p0vec, "vec"); check.param(p0vec, "sum")
-  check.param(p1vec, "req"); check.param(p1vec, "vec"); check.param(p1vec, "sum")
+  check.param(p0vec, "req"); check.param(p0vec, "vec"); check.param(p0vec, "sum1")
+  check.param(p1vec, "req"); check.param(p1vec, "vec"); check.param(p1vec, "sum1")
   check.param(N, "pos"); check.param(N, "min", min = 2)
   check.param(alpha, "unit")
   check.param(power, "unit")
@@ -52,17 +52,17 @@ chisq.gof <- function (p0vec = NULL, p1vec = NULL,
                   df, N * es^2, lower = FALSE)
   })
 
-  # Use stats::uniroot function to calculate missing argument
+  # Use safe.uniroot function to calculate missing argument
   if (is.null(power)) {
     power <- eval(p.body)
     if (!v) return(power)
   }
   else if (is.null(N)) {
-    N <- stats::uniroot(function(N) eval(p.body) - power, c(1 + 1e-10, 1e+09))$root
+    N <- safe.uniroot(function(N) eval(p.body) - power, c(1 + 1e-10, 1e+09))$root
     if (!v) return(N)
   }
   else if (is.null(alpha)) {
-    alpha <- stats::uniroot(function(sig.level) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
+    alpha <- safe.uniroot(function(sig.level) eval(p.body) - power, c(1e-10, 1 - 1e-10))$root
     if (!v) return(alpha)
   }
   else stop("internal error")
