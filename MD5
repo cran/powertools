@@ -1,4 +1,4 @@
-a70246ea7cf9787ecead46d7b6a23590 *DESCRIPTION
+87e9006651df8b14dd0d696ec5d04c38 *DESCRIPTION
 eb426133b7835b0b35970c08bc780210 *LICENSE
 91de214ef41d2a002f2a8c3402cd29aa *NAMESPACE
 56ef0d29ec1fd6e37ecbd867cb6ad87b *R/altprimary.R
@@ -40,16 +40,17 @@ c242a36f7f027f35357dc68be8ab2be4 *R/es.w.R
 c2429ec875b10beeb29a54b761cdbe14 *R/irgtt.bin.R
 548239a20ba74ba708a8c3da82ccba9d *R/irgtt.cont.R
 ecb5d5e3387c4b52c88bd762c3aebd26 *R/irt.hte.R
+36b642e4e0dda8fd217f3905a34ae7f6 *R/maps.R
 550c72445b728b29ed7dc737113742a5 *R/matrix.format.R
 6988019b790643b9f96793644c90e563 *R/mlrF.overall.R
-cf641e909ec2681b433bbca2aa59f595 *R/mlrF.partial.R
+023d5ba494cb2e46b6d6d4be22bf05a3 *R/mlrF.partial.R
 1c88af02d7734bac4328fc8549573a0c *R/ms.varexplore.R
 de8f6dcf248770e1c98e4f2d86493252 *R/multisite.bin.R
 1f7ae647f54a026151cf052d64012b85 *R/multisite.cont.R
 e8cfa6e1e930554736474c9fd345883f *R/multisite.hte.R
 0247367007fc5eaf33d61b06ce751a2a *R/prop.1samp.R
-93f7afc99540bfb5c940ea18249479e9 *R/prop.2samp.R
-2bd9291ed748bef9edd1e665f6cca093 *R/prop.paired.R
+ec8aebc973272587f45d8cd35e015017 *R/prop.2samp.R
+94aab140d6de64e4ac108710b2e30c57 *R/prop.paired.R
 8dc60bc853c5f4323e1a85a8fd006457 *R/prop.test.equiv.R
 564695251a8ed32af7ab74909b9d6b4b *R/propodds.R
 fa3475c6d1a593fa098817e9770b5b63 *R/ranksum.R
@@ -66,6 +67,7 @@ d34b78d0e91b6eda45e848c157f24a7c *R/safe.uniroot.R
 7d9c058bf215b8526a0e466cc7dfda5c *R/ztest.1samp.R
 99a645bb8eed08cecae69405553ec605 *R/ztest.2samp.R
 664bcd32d66257d78d9c014ff85c3daa *R/ztest.paired.R
+0238275b7327d6da8cd5c321aca35d1a *data/maps.rda
 ef02e07f2e0df156c7a7f4fdc980191b *man/altprimary.Rd
 0f21c33f1dd7905c705e9db2865934e5 *man/anova1way.F.bal.Rd
 677bb7204e2b60d12b9af898bc9cf0fc *man/anova1way.F.unbal.Rd
@@ -104,9 +106,10 @@ edb1342998e4165707932a06d8cd49bb *man/es.anova.f.Rd
 20ff955a645b9d14349befe80099e93d *man/irgtt.bin.Rd
 08df77a35ac425e442a7b8f5bd345030 *man/irgtt.cont.Rd
 8e6a52c474f4d4de5723b03a62a2e179 *man/irt.hte.Rd
+1cc63634903c24fcf45ba63f0ef2a957 *man/maps.Rd
 39ce6bd41bca9048a3fd8e62edc34c80 *man/matrix.format.Rd
 7fd9c9786f2c16d35a7c8b0902caa1f9 *man/mlrF.overall.Rd
-3ac0198d12e05823ab3772ef264769c8 *man/mlrF.partial.Rd
+17991131e53a236fe5b91612a71127aa *man/mlrF.partial.Rd
 0b7b8e05d94d2c4dfbbcd4021305dd7b *man/ms.varexplore.Rd
 67524a4e6af915c73aa600a243e435c4 *man/multisite.bin.Rd
 516077684b8bd116d6795df036812d1d *man/multisite.cont.Rd
